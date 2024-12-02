@@ -1,1 +1,2 @@
-web: gunicorn sistema_desempeno.wsgi
+web: waitress-serve --listen=*:8000 sistema_desempeno.wsgi:application
+
