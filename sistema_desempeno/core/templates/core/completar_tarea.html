@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Completando Tarea</title>
+</head>
+<body>
+    <h2>Marcar tarea como completada</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Marcar como completada</button>
+    </form>
+</body>
+</html>

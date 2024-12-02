@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Tareas Asignadas</h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Descripción</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarea in tareas %}
+            <tr>
+                <td>{{ tarea.tarea_predefinida.descripcion }}</td>
+                <td>{{ tarea.estado }}</td>
+                <td>
+                    {% if tarea.estado == 'pendiente' %}
+                    <a href="{% url 'completar_tarea' tarea.id %}" class="btn btn-success btn-sm">Marcar como Completada</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

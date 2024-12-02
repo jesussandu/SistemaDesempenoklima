@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Agregar Tarea Predefinida</h2>
+    <form method="post" class="p-4 shadow-sm rounded border">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea name="descripcion" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="periodicidad" class="form-label">Periodicidad</label>
+            <select name="periodicidad" class="form-control" required>
+                <option value="diario">Diario</option>
+                <option value="semanal">Semanal</option>
+                <option value="mensual">Mensual</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Guardar</button>
+    </form>
+</div>
+{% endblock %}

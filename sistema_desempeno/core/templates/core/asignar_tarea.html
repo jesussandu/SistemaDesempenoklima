@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asignar Tareas</title>
+</head>
+<body>
+    <h2>Asignar Tareas Predefinidas a Empleados</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <h3>Empleados:</h3>
+        {% for empleado in empleados %}
+            <h4>{{ empleado.username }}</h4>
+            <ul>
+                {% for tarea in tareas_predefinidas %}
+                    <li>
+                        <input type="checkbox" name="tarea_{{ tarea.id }}_{{ empleado.id }}" />
+                        {{ tarea.nombre }} - {{ tarea.descripcion }} ({{ tarea.periodicidad }})
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        <button type="submit">Asignar Tareas</button>
+    </form>
+
+</body>
+</html>

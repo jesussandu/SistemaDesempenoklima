@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Ver KPIs
+{% endblock %}
+
+{% block content %}
+<h2>KPIs de los Empleados</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Empleado</th>
+            <th>Tareas Completadas</th>
+            <th>Tareas Totales</th>
+            <th>Tasa de Finalización</th>
+            <th>Puntuación Total</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for kpi in kpis %}
+        <tr>
+            <td>{{ kpi.empleado.username }}</td>
+            <td>{{ kpi.tareas_completadas }}</td>
+            <td>{{ kpi.tareas_totales }}</td>
+            <td>{{ kpi.tasa_finalizacion }}%</td>
+            <td>{{ kpi.puntuacion_total }}</td>
+            <td>
+                {% if kpi.empleado.id %}
+                    <a href="{% url 'asignar_puntos_competencias' kpi.empleado.id %}">Asignar Puntos</a>
+                {% else %}
+                    <span>No se puede asignar puntos</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No hay KPIs disponibles.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

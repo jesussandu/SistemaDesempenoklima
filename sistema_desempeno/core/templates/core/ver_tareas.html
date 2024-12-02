@@ -1,0 +1,17 @@
+<!-- core/templates/core/ver_tareas.html -->
+<h1>Tareas Predefinidas</h1>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Periodicidad</th>
+    </tr>
+    {% for tarea in tareas %}
+    <tr>
+        <td>{{ tarea.nombre }}</td>
+        <td>{{ tarea.descripcion }}</td>
+        <td>{{ tarea.periodicidad }}</td>
+    </tr>
+    {% endfor %}
+</table>
